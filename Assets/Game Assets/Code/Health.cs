@@ -23,6 +23,8 @@ public class Health : MonoBehaviour
     {
         healthPoints = 3;
     }
+    
+    //TEST COMMENT I GUESS
 
     public void OnDamage()
     {
