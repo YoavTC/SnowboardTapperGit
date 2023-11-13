@@ -9,10 +9,8 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] [ReadOnly] private int healthPoints = 3;
+    public int healthPoints = 3;
     [SerializeField] private TextMeshProUGUI healthText;
-
-    public int health => healthPoints;
 
     public void RestartGame()
     {
@@ -31,7 +29,7 @@ public class Health : MonoBehaviour
         healthPoints--;
         healthText.text = healthPoints.ToString();
         Debug.Log("HP: " + healthPoints);
-        if (health <= 0)
+        if (healthPoints == 0)
         {
             Debug.Log("Killing Player");
             KillPlayer();
