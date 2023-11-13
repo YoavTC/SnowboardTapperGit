@@ -5,31 +5,28 @@ using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int healthPoints = 3;
+    [HideInInspector] public int health = 3;
     [SerializeField] private TextMeshProUGUI healthText;
 
     public void RestartGame()
     {
-        healthPoints = 3;
+        health = 3;
         healthText.text = "3";
-    }
-    private void Start()
-    {
-        healthPoints = 3;
     }
     
     //TEST COMMENT I GUESS
 
     public void OnDamage()
     {
-        healthPoints--;
-        healthText.text = healthPoints.ToString();
-        Debug.Log("HP: " + healthPoints);
-        if (healthPoints == 0)
+        health--;
+        healthText.text = health.ToString();
+        Debug.Log("HP: " + health);
+        if (health <= 1)
         {
             Debug.Log("Killing Player");
             KillPlayer();

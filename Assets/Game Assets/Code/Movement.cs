@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour
         transform.position += speedMultiplier * Time.deltaTime * (Vector3) movementVector;
         measurementObject.position += speedMultiplier * Time.deltaTime * Vector3.down;
         
-        if ((transform.position.x > xRightWall || transform.position.x < xLeftWall) && health.healthPoints > 0)
+        if ((transform.position.x > xRightWall || transform.position.x < xLeftWall) && health.health > 0)
         {
             Damage();
             SwitchDirections();

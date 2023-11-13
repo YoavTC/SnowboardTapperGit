@@ -21,6 +21,9 @@ public class Obstacle : MonoBehaviour
         currentSprite.sprite = sprites[Random.Range(0, sprites.Length - 1)];
         cuttingPoint = spawners.cuttingPoint;
         obstacleSpeed = spawners.obstaclesSpeed;
+        
+        transform.localScale = new Vector3(transform.localScale.x * (Random.Range(0, 2) * 2 - 1), transform.localScale.y, transform.localScale.z);
+
     }
 
     void Update()

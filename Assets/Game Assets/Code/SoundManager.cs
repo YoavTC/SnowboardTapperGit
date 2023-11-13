@@ -13,7 +13,7 @@ public class SoundManager : Singleton<SoundManager>
         public float pitch = 1.0f;
         public bool isMusic = false;
         public bool loop = false;
-        public bool mute = false;
+        [HideInInspector] public bool mute = false;
 
         [HideInInspector] public AudioSource source;
     }
@@ -36,14 +36,17 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void PlaySound(string soundName, bool loop = false, float volume = 1.0f, float pitch = 1.0f)
+    public void PlaySound(string soundName, bool loop = false, float volume = -1f, float pitch = -1f)
     {
         Sound sound = sounds.Find(s => s.name == soundName);
         if (sound != null)
         {
             sound.source.volume = sound.mute ? 0f : volume;
-            sound.source.pitch = pitch;
+            
+            if (volume == -1) sound.source.volume = sound.volume;
+            if (pitch == -1) sound.source.pitch = sound.pitch;
             sound.source.loop = loop;
+            
             if (sound.clips.Length > 1)
             {
                 sound.source.clip = sound.clips[Random.Range(0, sound.clips.Length)];
